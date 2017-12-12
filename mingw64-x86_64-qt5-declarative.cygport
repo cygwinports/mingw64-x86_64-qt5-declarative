@@ -2,7 +2,7 @@ TOOLCHAIN_TARGET="x86_64-w64-mingw32"
 inherit toolchain qt5-qmake
 
 NAME="mingw64-x86_64-qt5-declarative"
-VERSION=5.6.2
+VERSION=5.9.3
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="Qt5 QML library for Win64 toolchain"
@@ -14,6 +14,7 @@ investments made on one platform across many others."
 HOMEPAGE="https://www.qt.io/"
 SRC_URI="http://download.qt.io/official_releases/qt/${VERSION%.*}/${VERSION}/submodules/qtdeclarative-opensource-src-${VERSION}.tar.xz"
 SRC_DIR="qtdeclarative-opensource-src-${VERSION}"
+PATCH_URI="5.9.3-host_build.patch"
 
 # this is mostly cross-compiled, the native tools are only a small part
 RESTRICT="debuginfo"

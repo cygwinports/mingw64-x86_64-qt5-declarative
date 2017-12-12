@@ -1,0 +1,24 @@
+--- origsrc/qtdeclarative-opensource-src-5.9.3/src/qml/jsruntime/qv4alloca_p.h	2017-11-17 12:15:09.000000000 -0600
++++ src/qtdeclarative-opensource-src-5.9.3/src/qml/jsruntime/qv4alloca_p.h	2017-12-10 21:14:31.883339500 -0600
+@@ -53,9 +53,9 @@
+ 
+ #include <QtCore/private/qglobal_p.h>
+ 
+-#if QT_CONFIG(alloca_h)
++#if QT_CONFIG(alloca_h) || defined(__unix__)
+ #  include <alloca.h>
+-#elif QT_CONFIG(alloca_malloc_h)
++#elif QT_CONFIG(alloca_malloc_h) || defined(_WIN32)
+ #  include <malloc.h>
+ // This does not matter unless compiling in strict standard mode.
+ #  ifdef Q_CC_MSVC
+--- origsrc/qtdeclarative-opensource-src-5.9.3/tools/qmlcachegen/qmlcachegen.pro	2017-11-17 12:15:09.000000000 -0600
++++ src/qtdeclarative-opensource-src-5.9.3/tools/qmlcachegen/qmlcachegen.pro	2017-12-10 21:54:25.265161700 -0600
+@@ -1,6 +1,6 @@
+ option(host_build)
+ 
+-QT = qmldevtools-private
++QT = core qmldevtools-private
+ DEFINES += QT_NO_CAST_TO_ASCII QT_NO_CAST_FROM_ASCII
+ 
+ SOURCES = qmlcachegen.cpp
